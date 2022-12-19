@@ -20,5 +20,11 @@ add_definitions(-DLEAF_DEBUG)
 add_subdirectory(Fall22)
 add_subdirectory(Leaf)
 add_subdirectory(glfw)
+add_subdirectory(glad)
+add_subdirectory(stbi)
 
 set(VS_STARTUP_PROJECT Fall22)
+
+file(COPY Fall22/Assets DESTINATION ${PROJECT_BINARY_DIR}/Fall22)
+file(COPY Fall22/Assets DESTINATION ${PROJECT_BINARY_DIR}/Debug)
+file(COPY Fall22/Assets DESTINATION ${PROJECT_BINARY_DIR}/Release)

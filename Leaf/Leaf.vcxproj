@@ -102,12 +102,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LEAF_LIB;LEAF_WINDOWS;LEAF_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LEAF_LIB;LEAF_WINDOWS;LEAF_DEBUG;LEAF_OPENGL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;$(SolutionDir)Leaf;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;$(SolutionDir)Leaf;$(SolutionDir)stbi;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,12 +120,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LEAF_LIB;LEAF_WINDOWS;LEAF_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LEAF_LIB;LEAF_WINDOWS;LEAF_DEBUG;LEAF_OPENGL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;$(SolutionDir)Leaf;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;$(SolutionDir)Leaf;$(SolutionDir)stbi;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,18 +136,38 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GLFWcode\GLFWimplementation.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="Keys.h" />
     <ClInclude Include="LeafUtil.h" />
     <ClInclude Include="Leaf.h" />
     <ClInclude Include="LeafApp.h" />
+    <ClInclude Include="OpenGLcode\OpenGLPicture.h" />
+    <ClInclude Include="OpenGLcode\OpenGLRenderer.h" />
+    <ClInclude Include="OpenGLcode\OpenGLShader.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="LeafWindow.h" />
+    <ClInclude Include="Picture.h" />
+    <ClInclude Include="PictureImplementation.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RendererImplementation.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderImplementation.h" />
+    <ClInclude Include="Unit.h" />
     <ClInclude Include="WindowImplementation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Event.cpp" />
     <ClCompile Include="GLFWcode\GLFWimplementation.cpp" />
     <ClCompile Include="LeafApp.cpp" />
     <ClCompile Include="LeafWindow.cpp" />
+    <ClCompile Include="OpenGLcode\OpenGLPicture.cpp" />
+    <ClCompile Include="OpenGLcode\OpenGLRenderer.cpp" />
+    <ClCompile Include="OpenGLcode\OpenGLShader.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Picture.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\glad\glad.vcxproj">
@@ -155,6 +175,9 @@
     </ProjectReference>
     <ProjectReference Include="..\glfw\build\src\glfw.vcxproj">
       <Project>{ce5b5a16-cca5-3442-8710-0dd1aae63604}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\stbi\stbi.vcxproj">
+      <Project>{d5502d76-a933-4e1b-b4ec-4df783758fec}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,6 +3,7 @@
 #include "pch.h"
 #include "LeafUtil.h"
 #include "WindowImplementation.h"
+#include "Event.h"
 
 namespace Leaf
 {
@@ -15,12 +16,18 @@ namespace Leaf
 		virtual  void Create(int width, int height, const std::string& windowName);
 		virtual void SwapBuffers();
 
+		int GetWidth() const;
+		int GetHeight() const;
 
+		void SetKeyPressedCallback(const std::function<void(const KeyPressedEvent&)>& keyPressedCallback);
+		void SetKeyReleasedCallback(const std::function<void(const KeyReleasedEvent&)>& keyReleasedCallback);
 	private:
-		LeafWindow(); // constructor is private so multiple instances cannot be made
+		// LeafWindow(); // constructor is private so multiple instances cannot be made
 
 		inline static LeafWindow* mInstance{ nullptr };
 		WindowImplementation* mImplementation{ nullptr };
 
+		int mWidth{ 0 };
+		int mHeight{ 0 };
 	};
 }

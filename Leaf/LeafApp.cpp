@@ -1,12 +1,25 @@
 #include "pch.h"
 
-#include "LeafApp.h"
-#include "LeafUtil.h"
-#include "LeafWindow.h"
-#include "glad/glad.h"
+#include "Leaf.h"
+//#include "LeafApp.h"
+//#include "LeafUtil.h"
+//#include "LeafWindow.h"
+//#include "glad/glad.h"
+//#include "stb_image.h"
+//#include "Picture.h"
+//#include "Renderer.h"
+//#include "Keys.h"
 
 namespace Leaf
 {
+	LeafApp::LeafApp()
+	{
+		LeafWindow::Init();
+		LeafWindow::GetWindow()->Create(1000, 800, "TestWindow");
+
+		Renderer::Init();
+	}
+
 	void LeafApp::OnUpdate()
 	{
 
@@ -16,36 +29,29 @@ namespace Leaf
 	{
 		LEAF_LOG("Leaf Running... ");
 
-		LeafWindow::Init();
-		LeafWindow::GetWindow()->Create(600, 400, "TestWindow");
+		mNextFrameTime = std::chrono::steady_clock::now() + mFrameDuration;
 
-		/*
-		// set up vertex data (and buffer(s)) and configure vertex attributes
-		float vertices[] = {
-			-0.5f, -0.5f, // left  
-			 0.5f, -0.5f, // right 
-			 0.0f,  0.5f  // top   
-		};
+		int x{ 200 }, y{ 200 };
+		LeafWindow::GetWindow()->SetKeyPressedCallback([&](const KeyPressedEvent& event) {
+			if (event.GetKeyCode() == LEAF_KEY_LEFT) x -= 10;
+			else if (event.GetKeyCode() == LEAF_KEY_RIGHT) x += 10;
+			});
 
-		unsigned int VBO, VAO;
-		glGenVertexArrays(1, &VAO);
-		glGenBuffers(1, &VBO);
-		// bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-		glBindVertexArray(VAO);
-
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void *)0);
-		glEnableVertexAttribArray(0);
-
-		*/
+		Picture pic{ "Assets/Textures/fish.png" };
 
 		while (true)
 		{
-			LeafWindow::GetWindow()->SwapBuffers(); 
+			Renderer::Clear();
 
 			OnUpdate();
+
+			Renderer::Draw(pic, x, y, 1);
+
+			std::this_thread::sleep_until(mNextFrameTime);
+
+			LeafWindow::GetWindow()->SwapBuffers(); 
+
+			mNextFrameTime = std::chrono::steady_clock::now() + mFrameDuration;
 		}
 	}
 }

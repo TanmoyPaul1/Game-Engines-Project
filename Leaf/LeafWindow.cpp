@@ -28,6 +28,9 @@ namespace Leaf
 	void LeafWindow::Create(int width, int height, const std::string& windowName)
 	{
 		mImplementation->Create(width, height, windowName);
+
+		mWidth = width; 
+		mHeight = height;
 	}
 
 	void LeafWindow::SwapBuffers()
@@ -35,8 +38,21 @@ namespace Leaf
 		mImplementation->SwapBuffers();
 	}
 
-	LeafWindow::LeafWindow()
+	int LeafWindow::GetWidth() const
 	{
+		return mWidth;
 	}
 
+	int LeafWindow::GetHeight() const
+	{
+		return mHeight;
+	}
+	void LeafWindow::SetKeyPressedCallback(const std::function<void(const KeyPressedEvent&)>& keyPressedCallback)
+	{
+		mImplementation->SetKeyPressedCallback(keyPressedCallback);
+	}
+	void LeafWindow::SetKeyReleasedCallback(const std::function<void(const KeyReleasedEvent&)>& keyReleasedCallback)
+	{
+		mImplementation->SetKeyReleasedCallback(keyReleasedCallback);
+	}
 }

@@ -16,6 +16,7 @@ else()
 endif()
 
 add_definitions(-DLEAF_DEBUG)
+add_definitions(-DLEAF_OPENGL)
 
 add_subdirectory(Fall22)
 add_subdirectory(Leaf)

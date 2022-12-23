@@ -3,9 +3,9 @@
 
 namespace Leaf
 {
-	Unit::Unit(const std::string& picFile, int hp) : mPicture(picFile), mHP(hp) {}
+	Unit::Unit(const std::string& picFile, const std::string& color) : mPicture(picFile), mColor(color) {}
 
-	Unit::Unit(std::string&& picFile, int hp) : mPicture(picFile), mHP(hp) {}
+	Unit::Unit(std::string&& picFile, std::string&& color) : mPicture(picFile), mColor(color) {}
 
 	void Unit::SetCoord(int x, int y, int z)
 	{
@@ -47,15 +47,19 @@ namespace Leaf
 		return mZcoord;
 	}
 
-	int Unit::ChangeHP(int hpDiff)
+	std::string Unit::GetColor() const
 	{
-		mHP += hpDiff;
-		return mHP;
+		return mColor;
 	}
 
-	int Unit::GetHP() const
+	void Unit::DrawPicture(int x, int y, int z)
 	{
-		return mHP;
+		Leaf::Renderer::Draw(mPicture, x, y, 1);
+	}
+
+	bool Unit::operator==(const Unit& other)
+	{
+		return mColor == other.GetColor();
 	}
 
 	bool Unit::OverlapsWith(const Unit& other) const

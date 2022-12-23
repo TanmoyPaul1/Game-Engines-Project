@@ -3,7 +3,7 @@
 #include "pch.h"
 #include "LeafUtil.h"
 
-constexpr int FRAMES_PER_SECOND = 60;
+constexpr int FRAMES_PER_SECOND = 20;
 
 namespace Leaf
 {
@@ -13,6 +13,7 @@ namespace Leaf
 	public:
 		LeafApp();
 		virtual void OnUpdate();
+		virtual void Shoot();
 		void Run();
 
 	private:

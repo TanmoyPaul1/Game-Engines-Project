@@ -1,29 +1,20 @@
 #include "pch.h"
 
 #include "Leaf.h"
-//#include "LeafApp.h"
-//#include "LeafUtil.h"
-//#include "LeafWindow.h"
-//#include "glad/glad.h"
-//#include "stb_image.h"
-//#include "Picture.h"
-//#include "Renderer.h"
-//#include "Keys.h"
 
 namespace Leaf
 {
 	LeafApp::LeafApp()
 	{
 		LeafWindow::Init();
-		LeafWindow::GetWindow()->Create(1000, 800, "TestWindow");
+		LeafWindow::GetWindow()->Create(1350, 800, "TestWindow");
 
 		Renderer::Init();
 	}
 
-	void LeafApp::OnUpdate()
-	{
+	void LeafApp::OnUpdate() {}  // override in Fall22.cpp
 
-	}
+	void LeafApp::Shoot() {}   // override in Fall22.cpp
 	
 	void LeafApp::Run()
 	{
@@ -31,13 +22,23 @@ namespace Leaf
 
 		mNextFrameTime = std::chrono::steady_clock::now() + mFrameDuration;
 
-		int x{ 200 }, y{ 200 };
-		LeafWindow::GetWindow()->SetKeyPressedCallback([&](const KeyPressedEvent& event) {
-			if (event.GetKeyCode() == LEAF_KEY_LEFT) x -= 10;
-			else if (event.GetKeyCode() == LEAF_KEY_RIGHT) x += 10;
-			});
+		//int x{ 600 }, y{ 350 };		// fish coordinates
 
-		Picture pic{ "Assets/Textures/fish.png" };
+		//LeafWindow::GetWindow()->SetKeyPressedCallback([&](const KeyPressedEvent& event) {
+		//	if (event.GetKeyCode() == LEAF_KEY_LEFT) x -= 10;
+		//	else if (event.GetKeyCode() == LEAF_KEY_RIGHT) x += 10;
+		//	else if (event.GetKeyCode() == LEAF_KEY_UP) y += 10;
+		//	else if (event.GetKeyCode() == LEAF_KEY_DOWN) y -= 10;
+		//	});
+
+		//LeafWindow::GetWindow()->SetKeyReleasedCallback([&](const KeyReleasedEvent& event) {
+		//	if (event.GetKeyCode() == LEAF_KEY_LEFT) x -= 10;
+		//	else if (event.GetKeyCode() == LEAF_KEY_RIGHT) x += 10;
+		//	else if (event.GetKeyCode() == LEAF_KEY_UP) y += 10;
+		//	else if (event.GetKeyCode() == LEAF_KEY_DOWN) y -= 10;
+		//	});
+
+		//Picture fish{ "Assets/Textures/fish.png" };
 
 		while (true)
 		{
@@ -45,9 +46,11 @@ namespace Leaf
 
 			OnUpdate();
 
-			Renderer::Draw(pic, x, y, 1);
+			//Renderer::Draw(fish, 600, 350, 1);
 
+			//Shoot();
 			std::this_thread::sleep_until(mNextFrameTime);
+
 
 			LeafWindow::GetWindow()->SwapBuffers(); 
 

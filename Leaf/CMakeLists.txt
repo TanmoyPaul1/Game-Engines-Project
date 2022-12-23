@@ -1,4 +1,5 @@
 set(SOURCE_FILES 
+	Array.cpp
 	Event.cpp 
 	OpenGLcode/OpenGLPicture.cpp 
 	OpenGLcode/OpenGLShader.cpp 
@@ -13,6 +14,7 @@ set(SOURCE_FILES
    )
 
 set(HEADER_FILES 
+	Array.h
 	Event.h 
 	Keys.h
 	OpenGLcode/OpenGLPicture.h 

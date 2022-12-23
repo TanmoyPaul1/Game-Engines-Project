@@ -129,7 +129,7 @@ namespace Leaf
         glDeleteShader(fragmentShader);
 	}
 
-	void Leaf::OpenGLShader::Activate()
+	void OpenGLShader::Activate()
 	{
         glUseProgram(mShaderProg);
 	}

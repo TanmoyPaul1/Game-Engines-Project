@@ -22,8 +22,6 @@ namespace Leaf
 		void SetKeyPressedCallback(const std::function<void(const KeyPressedEvent&)>& keyPressedCallback);
 		void SetKeyReleasedCallback(const std::function<void(const KeyReleasedEvent&)>& keyReleasedCallback);
 	private:
-		// LeafWindow(); // constructor is private so multiple instances cannot be made
-
 		inline static LeafWindow* mInstance{ nullptr };
 		WindowImplementation* mImplementation{ nullptr };
 

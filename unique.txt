@@ -1,0 +1,21 @@
+Tanmoy Paul
+Fall 2022
+CSCI 39541
+Pavel Shostak
+
+My game is unique because there is no playable character. 
+The corner balls are just decoration. The fish indicates the middle. 
+
+There are 4 arrays of colored balls. Any time there is 3 of a color in an array, it is removed. 
+You use the arrow keys to indicate which direction the ball should be shot. 
+The ball immediately to the right/left/top/bottom of the middle ball is pushed up to be replaced.
+The replacement works by pushing into the array at that middle point. 
+The array on top goes from left to right, the bottom is vice versa. 
+The array on the left goes from top to bottom, the right is vice versa. 
+The game ends when all the arrays are too short to reach or 50 color matches have been made.
+
+I used an Array class to store Units and added the necessary functions instead of using 
+a vector because it was easier to draw them this way and customize other functions. 
+The Shoot method is used in the OnKeyPress function instead of with OnUpdate so that only
+keyboard presses can activate its functionality. I edited the Unit implementation to suit 
+the balls instead of a character. I overloaded an operator to compare Units. 

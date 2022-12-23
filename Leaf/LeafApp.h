@@ -13,7 +13,6 @@ namespace Leaf
 	public:
 		LeafApp();
 		virtual void OnUpdate();
-		virtual void Shoot();
 		void Run();
 
 	private:
